@@ -1,0 +1,9 @@
+Dim oDoc As Document = ThisApplication.ActiveDocument 
+   Dim A As Double = iProperties.Value("Custom", "대") 
+   Dim B As Double = iProperties.Value("Custom", "개") 
+   Dim Result As Double 
+
+Result = A * B 
+i = MessageBox.Show(Result, "합") 
+
+iLogicVb.UpdateWhenDone = True 
