@@ -1,0 +1,16 @@
+'D
+
+Dim oLength As Decimal 
+Dim oHeight As Decimal 
+Dim oWidth As Decimal 
+
+oLength = Round(Measure.ExtentsLength,2) 
+oHeight = Round(Measure.ExtentsHeight,2) 
+oWidth = Round(Measure.ExtentsWidth,2) 
+
+Dim DLength As String = oLength.ToString() 
+Dim DHeight As String = oHeight.ToString() 
+Dim DWidth As String = oWidth.ToString() 
+
+iProperties.Value("Custom", "Length") = DLength & DHeight & DWidth 
+MessageBox.Show("Length = " + DLength + vbNewLine + "Width = " + DWidth + vbNewLine + "Height = " + DHeight , "Part Size") 
