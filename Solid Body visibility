@@ -1,0 +1,49 @@
+'D
+
+Dim oCompDef as ComponentDefinition
+oCompDef = ThisDoc.Document.ComponentDefinition
+Dim oBody as SurfaceBody
+Dim MyArrayList As New ArrayList
+
+i = 1
+
+For Each SurfaceBody in oCompDef.SurfaceBodies
+    oBody = oCompDef.SurfaceBodies.Item(i)
+    MyArrayList.add(oBody.Name)
+    i = i +1
+Next
+
+MyArrayList.add(" *Show All")
+MyArrayList.add(" *Hide All")
+
+sBody  = InputListBox("Select a Solid Body to Toggle Visibility.", MyArrayList, "", "iLogic", "List of Solid Bodies")
+
+If sBody = " *Show All"Then
+    i = 1
+    For Each SurfaceBody in oCompDef.SurfaceBodies
+        oBody = oCompDef.SurfaceBodies.Item(i)
+        oBody.Visible = True
+        i = i +1
+    Next
+ElseIf sBody = " *Hide All" Then
+    i = 1
+    For Each SurfaceBody in oCompDef.SurfaceBodies
+        oBody = oCompDef.SurfaceBodies.Item(i)
+        oBody.Visible = False
+        i = i +1
+    Next
+End If
+
+i = 1
+For Each SurfaceBody in oCompDef.SurfaceBodies
+    oBody = oCompDef.SurfaceBodies.Item(i)
+    If sBody = oBody.Name Then
+        If oBody.Visible = False Then
+            oBody.Visible = True
+        Else
+            oBody.Visible = False
+        End If
+    End If
+    MyArrayList.add(oBody.Name)
+    i = i +1
+Next
